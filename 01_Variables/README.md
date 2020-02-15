@@ -157,3 +157,85 @@ typeof undefined; // undefined
 // also you can check
 null === undefined // false
 ```
+
+## Operators
+
+Addition `+`  
+Subtraction `-`  
+Multiplication `*`  
+Division `/`  
+Assigment `=`
+
+```javascript
+2 + 3 // 5
+3 - 1 // 2
+4 * 6 // 24
+22 / 7 // 3.142857142857143
+```
+
+if we use `+` with strings, then it concatenates them together.  
+
+```javascript
+let firstname = "Teerapat";
+let lastname = "Prommarak";
+let fullname = firstname + " " + lastname; // Teerapat Prommarak
+```
+
+if we use `+` with strings and number, then it also concatenates them together.
+
+```javascript
+1 + "2" // "12"
+```
+
+### Shortened assigned
+
+```javascript
+let num = 1;
+num += 2; // equal num = num + 2
+```
+
+### Other operators
+
+Remainder `%`  
+Power `**`
+
+```javascript
+10 % 3 // 1
+2 ** 3 // 8
+```
+
+### Operator precedence
+
+```javascript
+3 + 4 / 5 // 3.8 (just like 3 + (4 / 5))
+9 * 2 - 7 // 11
+```
+
+[see more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
+### Increment and Decrement
+
+```javascript
+let count = 10;
+count++
+consol.log(count) // 11
+
+let num = 12;
+num-- // 11
+consol.log(num) // 11
+```
+
+### Logical operators
+
+AND `&&`  
+OR `||`  
+
+```javascript
+true && true // true
+true && false // false
+false && false // false
+
+true || true // true
+true || false // true
+false || false // false
+```
