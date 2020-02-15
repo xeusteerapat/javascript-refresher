@@ -8,7 +8,7 @@ My reviewing of learning javascript in 2020.
 
 # Curriculum
 
-1. Variables
+1. [Variables](https://github.com/xeusteerapat/javascript-refresher/tree/master/01_Variables)
 2. Control flow
 3. Array
 4. Object
@@ -22,3 +22,8 @@ My reviewing of learning javascript in 2020.
 12. Asynchronous JavaScript
 13. HTTP Request
 14. Classes
+
+References
+
+- [MDN Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [javacript.info](https://javascript.info/)
