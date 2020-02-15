@@ -52,11 +52,13 @@ from [let keyword mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScri
 
 > Variables declared by let have their scope in the block for which they are defined, as well as in any contained sub-blocks.  
 
-for example
+for example from MDN
 
 ```javascript
 function varTest() {
   var x = 1;
+
+  // different scope
   {
     var x = 2;  // same variable!
     console.log(x);  // 2
@@ -66,6 +68,8 @@ function varTest() {
 
 function letTest() {
   let x = 1;
+
+  // different scope
   {
     let x = 2;  // different variable
     console.log(x);  // 2
@@ -239,3 +243,40 @@ true || true // true
 true || false // true
 false || false // false
 ```
+
+## Types Conversion
+
+### Numeric conversion
+
+```javascript
+let num = "123"; // 123 as string
+let realNum = Number(num); // 123 as number
+```
+
+### String conversion
+
+```javascript
+let isCorrect = true; // boolean
+let isCorrectString = String(isCorrect); // "true" as string
+```
+
+### Boolean conversion
+
+```javascript
+console.log(Boolean(1)); // true
+console.log(Boolean(0)); // false
+
+console.log(Boolean("hi")); // true
+console.log(Boolean("") ; // false
+```
+
+## String Methods
+
+### String Indices
+
+string are indexed, each character has a corresponding index.  
+
+| s   | t   | r   | i   | n   | g   |
+| --- | --- | --- | --- | --- | --- |
+| 0   | 1   | 2   | 3   | 4   | 5   |
+

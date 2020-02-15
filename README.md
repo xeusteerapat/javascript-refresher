@@ -8,7 +8,7 @@ My reviewing of learning javascript in 2020.
 
 # Curriculum
 
-1. [Variables](https://github.com/xeusteerapat/javascript-refresher/tree/master/01_Variables)
+1. [Variables and Data types](https://github.com/xeusteerapat/javascript-refresher/tree/master/01_Variables)
 2. Control flow
 3. Array
 4. Object
