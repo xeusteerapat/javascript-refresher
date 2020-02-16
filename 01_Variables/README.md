@@ -232,7 +232,8 @@ consol.log(num); // 11
 ### Logical operators
 
 AND `&&`  
-OR `||`
+OR `||`  
+NOT `!`
 
 ```javascript
 true && true; // true
@@ -242,6 +243,10 @@ false && false; // false
 true || true; // true
 true || false; // true
 false || false; // false
+
+!true; // false
+!null; // false
+!(3 <= 4); // false
 ```
 
 ## Types Conversion
