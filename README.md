@@ -27,3 +27,4 @@ References
 
 - [MDN Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [javacript.info](https://javascript.info/)
+- [The Modern Javascript Bootcamp Course (2020)](https://www.udemy.com/course/javascript-beginners-complete-tutorial/)
