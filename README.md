@@ -2,7 +2,7 @@
 
 My reviewing of learning javascript in 2020.
 
-# What is JavaScript?
+# What is JavaScript
 
 - Just ask [Google](https://www.google.com/) LOL plenty resource out there, I don't want to explain about history here. You know what? just read [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
