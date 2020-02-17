@@ -10,7 +10,7 @@ My reviewing of learning javascript in 2020.
 
 1. [Variables and Data types](https://github.com/xeusteerapat/javascript-refresher/tree/master/01_Variables)
 2. [Control flow](https://github.com/xeusteerapat/javascript-refresher/tree/master/02_Control_Flow)
-3. Array
+3. [Array](https://github.com/xeusteerapat/javascript-refresher/tree/master/03_Array)
 4. Object
 5. Loops
 6. Functions
