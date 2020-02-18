@@ -74,7 +74,7 @@ myFavNums.unshift(2); // [2, 4, 7, 8]
 
 more methods
 
-### Concatetation
+### concat
 
 ```javascript
 array1.concat(array2);
@@ -91,7 +91,7 @@ let meats = ["beef", "pork", "chicken"];
 let allFood = fruits.concat(veggies, meats);
 ```
 
-### Includes
+### includes
 
 will return boolean
 
@@ -116,4 +116,106 @@ myFavNBA.indexOf("TMAC"); // 2
 myFavNBA.includes("Steph"); // -1
 
 // and yes, we can add option like includes
+```
+
+### reverse and join
+
+```javascript
+Array.reverse(); // be careful, you will mutate the old one.
+
+let letters = ["A", "B", "C", "D", "E", "F", "G"];
+letters.reverse(); // // ["G", "F", "E", "D", "C", "B", "A"]
+
+let nums = [1, 2, 3, 4, 5];
+nums.reverse(); // [5,4,3,2,1]
+
+// join
+letters.join("-"); // we can select the character to join them together.
+// we'll get string "A-B-C-D-E-F-G"
+```
+
+if we join the other type (not string) in array, it will return as string.
+
+```javascript
+[1, 2, true, 14.3].join(""); // '12true14.3'
+```
+
+### slice
+
+Slice method is not mutate the original array. It will a copy of the array that we've selected. Syntax is here
+
+```javascript
+arr.slice([start], [end]);
+```
+
+let's see example
+
+```javascript
+let myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+
+myFavLang.slice(2, 4); // start from index 2 not include 4 and we'll get [ 'go', 'elixir' ]
+
+myFavLang.slice(3); // ["elixir", "rust", "C++"] from index 3 to the end.
+
+myFavLang.slice(-4); // [ 'go', 'elixir', 'rust', 'C++' ] 4 items from the end.
+
+// or just copy whole array
+let yourFavLangMaybe = myFavLang.slice();
+```
+
+### splice
+
+Splice can remove and replace elements inside the array, syntax here.
+
+```javascript
+arr.splice(index[, deleteCount, item1, ..., itemN])
+```
+
+see example
+
+```javascript
+let myWords = ["I", "javascript", "very", "much"];
+
+// add start index1
+// remove 0 item
+// add love
+myWords.splice(1, 0, "love"); // myWords = ["I", "love", "javascript", "very", "much"]
+
+// remove start index3
+// remove 2 items
+// return [ 'very', 'much' ]
+// but myWords = ["I", "love", "javascript"]
+myWords.splice(3, 2);
+
+// how'bout remove "love"
+// add 2 words,
+myWords.splice(1, 1, "really", "like");
+// myWords = ["I", "really", "like", "javascript"]
+```
+
+### sort
+
+Kinda weird when use this method because, it works only string.
+
+```javascript
+Array.sort();
+
+let randomArr = ["Bee", "Dude", "Cat", "Angel"];
+
+randomArr.sort(); // [ 'Angel', 'Bee', 'Cat', 'Dude' ] and also mutated
+```
+
+but if we try to sort numbers, it doesn't work as expected (some groups of numbers)
+
+```javascript
+let randomNums = [10, 1000000, 43, 356];
+randomNums.sort(); // [ 10, 1000000, 356, 43 ] not even close! becuz it not a numeric sorted, it just convert to string and compare.
+```
+
+so, we try to sort array of numbers, we'll use helper function like so
+
+```javascript
+randomNums.sort((a, b) => {
+  return a - b;
+}); // then we'll get [ 10, 43, 356, 1000000 ]
 ```
