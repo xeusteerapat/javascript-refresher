@@ -219,3 +219,40 @@ randomNums.sort((a, b) => {
   return a - b;
 }); // then we'll get [ 10, 43, 356, 1000000 ]
 ```
+
+## Using `const` with array
+
+Even though we've use `const` with array. but we still mutate elements inside of the array. Because array is a reference type not like primitive type (number, string, boolean, etc.) when we create a new array, we pimply created a reference to the memory space.
+
+```javascript
+let a = 2;
+let b = a; // both a and b are equal to 2
+
+// change value of a
+a = 4;
+console.log(b); // still get 2 because we creted a copy of value of a.
+```
+
+compare to array
+
+```javascript
+let myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+
+let yourFavLang = myFavLang;
+
+yourFavLang.pop(); // remove C++
+console.log(myFavLang); // C++ also removed!
+```
+
+even we've used `const`
+
+```javascript
+const myNums = [1, 2, 3, 4, 5];
+
+const yourNums = myNums;
+
+yourNums.pop(); // remove 5
+console.log(myNums); // 5 also removed!
+```
+
+kinda weird behavior of using `const` declared with an array. But when you get used to pass by value and pass by reference, you'll more understand.
