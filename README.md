@@ -11,7 +11,7 @@ My reviewing of learning javascript in 2020.
 1. [Variables and Data types](https://github.com/xeusteerapat/javascript-refresher/tree/master/01_Variables)
 2. [Control flow](https://github.com/xeusteerapat/javascript-refresher/tree/master/02_Control_Flow)
 3. [Array](https://github.com/xeusteerapat/javascript-refresher/tree/master/03_Array)
-4. [Object](https://github.com/xeusteerapat/javascript-refresher/tree/master/04_Object)
+4. [Objects](https://github.com/xeusteerapat/javascript-refresher/tree/master/04_Objects)
 5. [Loops](https://github.com/xeusteerapat/javascript-refresher/tree/master/05_Loops)
 6. [Functions](https://github.com/xeusteerapat/javascript-refresher/tree/master/06_Functions)
 7. Advanced Functions
