@@ -88,3 +88,35 @@ func5(4);
 1111
 */
 ```
+
+## The `for-of` loop
+
+new way to iterate over iterables like `string` or `Array` the syntax is quite cleaner than normal `for` loop. **_not all browsers support_**
+
+```javascript
+let team = ["Mesut", "Auba", "Laca", "Pepe"];
+
+// normal for loop
+for (let i = 0; i < team.length; i++) {
+  console.log(i);
+}
+
+// for of, easier to read and cleaner
+for (let player of team) {
+  console.log(player); // result is same as above
+}
+
+for (let char of "ILOVEYOU") {
+  console.log(char.toLowerCase());
+}
+/*
+i
+l
+o
+v
+e
+y
+o
+u
+*/
+```
