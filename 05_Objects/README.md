@@ -114,6 +114,24 @@ function makeUser(name, age) {
 }
 ```
 
+## Getting keys or values from object
+
+we can get keys or values from an object using `Object.keys(obj)` or `Object.values(obj)` this will return an array.
+
+```javascript
+let user = {
+  name: "Teerapat",
+  age: 33,
+  isAdmin: true
+};
+
+let keys = Object.keys(user);
+// keys [ 'name', 'age', 'isAdmin' ]
+
+let values = Object.values(user);
+// values [ 'Teerapat', 33, true ]
+```
+
 ## Checking property existence
 
 to check about property existence test, accessing a non-existing property will return `undefined`
