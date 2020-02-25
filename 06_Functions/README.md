@@ -108,3 +108,39 @@ function isPurple(color) {
   return color.toLowerCase() == "purple";
 }
 ```
+
+## Introduction to Arrow function
+
+A shortened form to write a function with simple and concise syntax.
+
+```javascript
+let funcName = (arg1, arg2, ...argN) => {
+  return expression;
+};
+
+// regular function
+function sum(a, b) {
+  return a + b;
+}
+
+// refactor to arrow function
+const sum = (a, b) => {
+  return a + b;
+};
+```
+
+and if we just have only one argument, we can remove `()` around the parameter.
+
+```javascript
+const double = num => {
+  return num * 2;
+};
+```
+
+even better, we can remove `{}` and `return` keyword if just return only one single line of code.
+
+```javascript
+const double = num => num * 2;
+```
+
+There are some details about arrow functions in some invocation context, we'll explain later in the next section.
