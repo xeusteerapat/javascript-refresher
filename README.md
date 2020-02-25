@@ -16,7 +16,7 @@ My reviewing of learning javascript in 2020.
 6. [Functions](https://github.com/xeusteerapat/javascript-refresher/tree/master/06_Functions)
 7. [Advanced Functions](https://github.com/xeusteerapat/javascript-refresher/tree/master/07_Advanced_Functions)
 8. ES6 and newly features
-9. [Object method and the `this` keyword]()
+9. [Object method and the `this` keyword](https://github.com/xeusteerapat/javascript-refresher/tree/master/09_Object_Method)
 10. DOM manipulation
 11. Events
 12. Asynchronous JavaScript
