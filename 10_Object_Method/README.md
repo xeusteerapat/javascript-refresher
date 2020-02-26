@@ -199,3 +199,5 @@ const person = {
 
 person.laugh(); // `this` keyword inside setInterval callback function is reference to Object person and when you `laugh` method, it will print HAHAHAHAHA for every 3 seconds
 ```
+
+![this with arrow function](this_with_arrow.gif)
