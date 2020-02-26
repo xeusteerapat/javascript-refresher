@@ -4,40 +4,40 @@ We can add functions as properties on objects. We call them "methods"!
 
 ```javascript
 const mathOps = {
-    add: function(a, b) {
-        return a + b;
-    },
-    subtract: function(a, b) {
-        return a - b;
-    },
-    multiply: function(a, b) {
-        return a * b;
-    },
-    divide: function(a, b) {
-        return a / b;
-    }
-}
+  add: function(a, b) {
+    return a + b;
+  },
+  subtract: function(a, b) {
+    return a - b;
+  },
+  multiply: function(a, b) {
+    return a * b;
+  },
+  divide: function(a, b) {
+    return a / b;
+  }
+};
 
-math.add(5,6); // 11, same idea as Math.add (build-in function)
+math.add(5, 6); // 11, same idea as Math.add (build-in function)
 ```
 
 we can write them in the short way, no need `key` : `value`
 
 ```javascript
 const mathOps = {
-    add(a, b) {
-        return a + b;
-    },
-    subtract(a, b) {
-        return a - b;
-    },
-    multiply(a, b) {
-        return a * b;
-    },
-    divide(a, b) {
-        return a / b;
-    }
-}
+  add(a, b) {
+    return a + b;
+  },
+  subtract(a, b) {
+    return a - b;
+  },
+  multiply(a, b) {
+    return a * b;
+  },
+  divide(a, b) {
+    return a / b;
+  }
+};
 ```
 
 ## The `this` keyword
@@ -50,8 +50,8 @@ for example:
 
 ```javascript
 function sayHi() {
-    console.log("Hello!");
-    console.log(this);
+  console.log("Hello!");
+  console.log(this);
 }
 ```
 
@@ -93,13 +93,13 @@ as you can see, value of `this` is different, inside the method `this` is refer 
 
 ```javascript
 const person = {
-    firstname: "Teerapat",
-    lastname: "Prommarak",
-    nickname: "X",
-    getFullname() {
-        console.log(`${this.firstname} ${this.lastname}`)
-    }
-}
+  firstname: "Teerapat",
+  lastname: "Prommarak",
+  nickname: "X",
+  getFullname() {
+    console.log(`${this.firstname} ${this.lastname}`);
+  }
+};
 
 person.getFullname(); // Teerapat Prommarak
 ```
@@ -117,16 +117,18 @@ We could also add another method to the object and call a different method using
 
 ```javascript
 const person = {
-    firstname: "Teerapat",
-    lastname: "Prommarak",
-    nickname: "X",
-    getFullname() {
-       return `${this.firstname} ${this.lastname}`
-    },
-    getBio() {
-        console.log(`${this.getFullname()} is a person who is studying in web development`)
-    }
-}
+  firstname: "Teerapat",
+  lastname: "Prommarak",
+  nickname: "X",
+  getFullname() {
+    return `${this.firstname} ${this.lastname}`;
+  },
+  getBio() {
+    console.log(
+      `${this.getFullname()} is a person who is studying in web development`
+    );
+  }
+};
 
 person.getBio(); // Teerapat Prommarak is a person who is studying in web development
 ```
@@ -137,19 +139,21 @@ Arrow functions are special, they don't have their own `this`. If we reference `
 
 ```javascript
 const person = {
-    firstname: "Teerapat",
-    lastname: "Prommarak",
-    nickname: "X",
-    getFullname() {
-       return `${this.firstname} ${this.lastname}`
-    },
-    getBio() {
-        console.log(`${this.getFullname()} is a person who is studying in web development`)
-    },
-    laugh: () => {
-        console.log(`${this.nickname} says HAHAHAHA`)
-    }
-}
+  firstname: "Teerapat",
+  lastname: "Prommarak",
+  nickname: "X",
+  getFullname() {
+    return `${this.firstname} ${this.lastname}`;
+  },
+  getBio() {
+    console.log(
+      `${this.getFullname()} is a person who is studying in web development`
+    );
+  },
+  laugh: () => {
+    console.log(`${this.nickname} says HAHAHAHA`);
+  }
+};
 
 person.laugh(); // undefined says HAHAHAHA
 ```
@@ -158,13 +162,11 @@ if we log `this` and check
 
 ```javascript
 const person = {
-    laugh: () => {
-        console.log(this)
-        console.log(`${this.nickname} says HAHAHAHA`)
-    }
-}
-
-
+  laugh: () => {
+    console.log(this);
+    console.log(`${this.nickname} says HAHAHAHA`);
+  }
+};
 ```
 
 `this` is reference to window
@@ -172,3 +174,28 @@ const person = {
 ![this with arrow function](arrow_this.png)
 
 to recap value of `this` is depends on the invocation context the function it is used in. And arrow function have no `this`
+
+However, arrow function might useful in some particular cases. What if I want to call `laugh` method every 3 seconds.
+
+```javascript
+const person = {
+  firstname: "Teerapat",
+  lastname: "Prommarak",
+  nickname: "X",
+  getFullname() {
+    return `${this.firstname} ${this.lastname}`;
+  },
+  getBio() {
+    console.log(
+      `${this.getFullname()} is a person who is studying in web development`
+    );
+  },
+  laugh() {
+    setInterval(() => {
+      console.log(`${this.firstname} says HAHAHAHAHA`);
+    }, 3000);
+  }
+};
+
+person.laugh(); // `this` keyword inside setInterval callback function is reference to Object person and when you `laugh` method, it will print HAHAHAHAHA for every 3 seconds
+```
