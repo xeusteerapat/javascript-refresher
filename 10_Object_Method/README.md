@@ -235,20 +235,34 @@ Normally, constructor does not `return` statement. Result automatically returns 
 1. If we `return` an object, then the object is returned instead of `this`.
 2. If we `return` a primitive, it’s ignored.
 
+here is what happens behind the scenes
+
+```javascript
+function User(name, age, isAdmin) {
+  // this = {};
+  this.name = name;
+  this.age = age;
+  this.isAdmin = isAdmin;
+  // return this;
+}
+```
+
+what if we return an object?
+
 ```javascript
 function BigUser() {
   this.name = "John";
-  return { name: "Godzilla" };  // <-- returns this object
+  return { name: "Godzilla" }; // <-- returns this object
 }
 
-console.log( new BigUser().name );  // Godzilla
+console.log(new BigUser().name); // Godzilla
 
 function SmallUser() {
   this.name = "John";
   return; // <-- actually it returns `this` (object that created)
 }
 
-console.log( new SmallUser().name );  // John
+console.log(new SmallUser().name); // John
 ```
 
 ### Methods in constructors
@@ -260,8 +274,8 @@ function User(name, age, isAdmin) {
   this.isAdmin = isAdmin;
 
   this.greeting = function() {
-    console.log(`Hello, my name is ${this.name} I'm ${this.age} years old`)
-  }
+    console.log(`Hello, my name is ${this.name} I'm ${this.age} years old`);
+  };
 }
 
 const user3 = new User("Mesut", 31, false);
