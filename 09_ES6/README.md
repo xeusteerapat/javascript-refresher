@@ -221,3 +221,5 @@ const numObj = {...[4,5,6,7]}; // we'll get object back with indecies
     '3': 7
 }
 ```
+
+### Rest syntax
