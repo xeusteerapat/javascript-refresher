@@ -284,6 +284,7 @@ string are indexed, each character has a corresponding index.
 | s   | t   | r   | i   | n   | g   |
 | --- | --- | --- | --- | --- | --- |
 | 0   | 1   | 2   | 3   | 4   | 5   |
+| -6  | -5  | -4  | -3  | 2   | -1  |
 
 use `str.length`
 
@@ -339,11 +340,12 @@ myFavSong.indexOf("TEAM"); // -1 if not found
 
 ### includes, startWith and endsWith
 
-will return boolean
+will return boolean, and you also can pass second parameter as a starting point to search for.
 
 ```javascript
 myFavSong.includes("Mouth"); // true
 myFavSong.includes("TEAM"); // false
+myFavSong.includes("My", 3); // false, because it start from index 3
 
 myFavSong.startWith("My"); // true
 myFavSong.endsWith("Yes"); // false
