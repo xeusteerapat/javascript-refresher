@@ -201,3 +201,69 @@ person.laugh(); // `this` keyword inside setInterval callback function is refere
 ```
 
 ![this with arrow function](this_with_arrow.gif)
+
+## Object constructor function
+
+Constructor functions technically are regular functions. There are two conventions though:
+
+1. They are named with capital letter first.
+2. They should be executed only with `new` operator.
+
+For example
+
+```javascript
+function User(name, age, isAdmin) {
+  this.name = name;
+  this.age = age;
+  this.isAdmin = isAdmin;
+}
+
+// create a new user by using `new` operator
+const user1 = new User("David", 30, true);
+console.log(user1); // User { name: 'David', age: 30, isAdmin: true }
+
+const user2 = new User("Peter", 25, false);
+console.log(user2); // User { name: 'Peter', age: 25, isAdmin: false }
+```
+
+As you can see, we can easily create a new user by using constructor function. That’s the main purpose of constructors – **to implement reusable object creation code.**
+
+### Return from constructors
+
+Normally, constructor does not `return` statement. Result automatically returns as `this`. But if we provide `return` statement, then rule is:
+
+1. If we `return` an object, then the object is returned instead of `this`.
+2. If we `return` a primitive, it’s ignored.
+
+```javascript
+function BigUser() {
+  this.name = "John";
+  return { name: "Godzilla" };  // <-- returns this object
+}
+
+console.log( new BigUser().name );  // Godzilla
+
+function SmallUser() {
+  this.name = "John";
+  return; // <-- actually it returns `this` (object that created)
+}
+
+console.log( new SmallUser().name );  // John
+```
+
+### Methods in constructors
+
+```javascript
+function User(name, age, isAdmin) {
+  this.name = name;
+  this.age = age;
+  this.isAdmin = isAdmin;
+
+  this.greeting = function() {
+    console.log(`Hello, my name is ${this.name} I'm ${this.age} years old`)
+  }
+}
+
+const user3 = new User("Mesut", 31, false);
+user3.greeting(); // => Hello, my name is Mesut I'm 31 years old
+```
