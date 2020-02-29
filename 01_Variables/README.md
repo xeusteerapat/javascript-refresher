@@ -9,7 +9,7 @@
 `let` keyword
 
 ```javascript
-let name = "Teerapat";
+let name = 'Teerapat';
 console.log(name); // prints "Teerapat"
 
 let myAge = 33;
@@ -43,7 +43,7 @@ by conventional we'll use "camel case" for naming variables.
 
 ```javascript
 let myAge = 33;
-let resultWrapper = document.getElementById("result");
+let resultWrapper = document.getElementById('result');
 ```
 
 ## Scoping rules
@@ -118,8 +118,8 @@ typeof NaN; // "number"
 A sequence of characters wrap in quotes. Either single of double.
 
 ```javascript
-let address = "123 st. downtown";
-const firstname = "Teerapat";
+let address = '123 st. downtown';
+const firstname = 'Teerapat';
 ```
 
 ### Boolean
@@ -180,15 +180,15 @@ Assigment `=`
 if we use `+` with strings, then it concatenates them together.
 
 ```javascript
-let firstname = "Teerapat";
-let lastname = "Prommarak";
-let fullname = firstname + " " + lastname; // Teerapat Prommarak
+let firstname = 'Teerapat';
+let lastname = 'Prommarak';
+let fullname = firstname + ' ' + lastname; // Teerapat Prommarak
 ```
 
 if we use `+` with strings and number, then it also concatenates them together.
 
 ```javascript
-1 + "2"; // "12"
+1 + '2'; // "12"
 ```
 
 ### Shortened assigned
@@ -254,7 +254,7 @@ false || false; // false
 ### Numeric conversion
 
 ```javascript
-let num = "123"; // 123 as string
+let num = '123'; // 123 as string
 let realNum = Number(num); // 123 as number
 ```
 
@@ -289,7 +289,7 @@ string are indexed, each character has a corresponding index.
 use `str.length`
 
 ```javascript
-let myFavSong = "My Stupid Mouth";
+let myFavSong = 'My Stupid Mouth';
 myFavSong.length; // 16, spaces include.
 ```
 
@@ -306,15 +306,15 @@ myFavsong[myFavSong.lenght - 1]; // h , last character
 which means, you cannot change it.
 
 ```javascript
-let myFavSong = "My Stupid Mouth";
-myFavSong[0] = "D";
+let myFavSong = 'My Stupid Mouth';
+myFavSong[0] = 'D';
 console.log(myFavSong); // still "My Stupid Mouth"
 ```
 
 ### Uppercase and Lowercase
 
 ```javascript
-let myFavSong = "My Stupid Mouth";
+let myFavSong = 'My Stupid Mouth';
 myFavSong.toUpperCase(); // 'MY STUPID Mouth'
 myFavSong.toLowerCase(); // 'my stupid Mouth'
 ```
@@ -324,7 +324,7 @@ myFavSong.toLowerCase(); // 'my stupid Mouth'
 use `str.slice(start, [end])` end is **exclusive**
 
 ```javascript
-let myFavSong = "My Stupid Mouth";
+let myFavSong = 'My Stupid Mouth';
 myFavSong.slice(3, 9); // 'Stupid' space not include
 myFavSons.slice(11); // Mouth from 11 till the end
 ```
@@ -334,8 +334,8 @@ myFavSons.slice(11); // Mouth from 11 till the end
 use `str.indexOf`
 
 ```javascript
-myFavSong.indexOf("Mouth"); // 10
-myFavSong.indexOf("TEAM"); // -1 if not found
+myFavSong.indexOf('Mouth'); // 10
+myFavSong.indexOf('TEAM'); // -1 if not found
 ```
 
 ### includes, startWith and endsWith
@@ -343,12 +343,12 @@ myFavSong.indexOf("TEAM"); // -1 if not found
 will return boolean, and you also can pass second parameter as a starting point to search for.
 
 ```javascript
-myFavSong.includes("Mouth"); // true
-myFavSong.includes("TEAM"); // false
-myFavSong.includes("My", 3); // false, because it start from index 3
+myFavSong.includes('Mouth'); // true
+myFavSong.includes('TEAM'); // false
+myFavSong.includes('My', 3); // false, because it start from index 3
 
-myFavSong.startWith("My"); // true
-myFavSong.endsWith("Yes"); // false
+myFavSong.startWith('My'); // true
+myFavSong.endsWith('Yes'); // false
 ```
 
 ### Trimming white space
@@ -356,15 +356,15 @@ myFavSong.endsWith("Yes"); // false
 use `str.trim()`
 
 ```javascript
-let song = "      Back To You       ";
+let song = '      Back To You       ';
 song.trim(); // 'Back To You' spaces between are not remove
 ```
 
 ### Replace
 
 ```javascript
-let myFavSong = "My Stupid Mouth";
-myFavSong.replace("My", "Your"); //'Your Stupid Mounth'
+let myFavSong = 'My Stupid Mouth';
+myFavSong.replace('My', 'Your'); //'Your Stupid Mounth'
 ```
 
 ## Math Object
@@ -389,9 +389,9 @@ Math.floor(Math.random() * 6) + 1; // result from 1 to 6
 Normally use for convert strings to numbers
 
 ```javascript
-parseInt("24"); // 24
-parseInt("24.54"); // get only 24
-parseFloat("24.54"); // 24.54
-parseFloat("2dsfsdf"); // 2
-parseInt("Deeeee"); // NaN
+parseInt('24'); // 24
+parseInt('24.54'); // get only 24
+parseFloat('24.54'); // 24.54
+parseFloat('2dsfsdf'); // 2
+parseInt('Deeeee'); // NaN
 ```

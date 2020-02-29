@@ -13,7 +13,7 @@ The most popular is the second one.
 
 ```javascript
 // Array of strings
-let firstTeam = ["Ozil", "Auba", "Laca", "Pepe"];
+let firstTeam = ['Ozil', 'Auba', 'Laca', 'Pepe'];
 
 // Array of numbers
 let primeNum = [2, 3, 5, 7, 11, 13];
@@ -24,7 +24,7 @@ let primeNum = [2, 3, 5, 7, 11, 13];
 use `[]`
 
 ```javascript
-let firstTeam = ["Ozil", "Auba", "Laca", "Pepe"];
+let firstTeam = ['Ozil', 'Auba', 'Laca', 'Pepe'];
 
 firstTeam[0]; // "Ozil"
 firstTeam[3]; // "Pepe"
@@ -84,9 +84,9 @@ let arr2 = [4, 5, 6];
 let arr3 = arr1.concat(arr2); // [1, 2, 3, 4, 5, 6]
 
 // Even more than 2 arrays
-let fruits = ["apple", "banana", "grape"];
-let veggies = ["asparagus", "spinash"];
-let meats = ["beef", "pork", "chicken"];
+let fruits = ['apple', 'banana', 'grape'];
+let veggies = ['asparagus', 'spinash'];
+let meats = ['beef', 'pork', 'chicken'];
 
 let allFood = fruits.concat(veggies, meats);
 ```
@@ -96,13 +96,13 @@ let allFood = fruits.concat(veggies, meats);
 will return boolean
 
 ```javascript
-let myFavNBA = ["Kobe", "Lebron", "TMAC", "Carter", "PG13"];
+let myFavNBA = ['Kobe', 'Lebron', 'TMAC', 'Carter', 'PG13'];
 
-myFavNBA.includes("Kobe"); // true
-myFavNBA.includes("Steph"); // false
+myFavNBA.includes('Kobe'); // true
+myFavNBA.includes('Steph'); // false
 
 // Optional with start index
-myFavNBA.includes("Lebron", 2); // false bcuz Lebron's index is 1
+myFavNBA.includes('Lebron', 2); // false bcuz Lebron's index is 1
 ```
 
 ### indexOf
@@ -110,10 +110,10 @@ myFavNBA.includes("Lebron", 2); // false bcuz Lebron's index is 1
 will return index of element, if no will return -1
 
 ```javascript
-let myFavNBA = ["Kobe", "Lebron", "TMAC", "Carter", "PG13"];
+let myFavNBA = ['Kobe', 'Lebron', 'TMAC', 'Carter', 'PG13'];
 
-myFavNBA.indexOf("TMAC"); // 2
-myFavNBA.includes("Steph"); // -1
+myFavNBA.indexOf('TMAC'); // 2
+myFavNBA.includes('Steph'); // -1
 
 // and yes, we can add option like includes
 ```
@@ -123,21 +123,21 @@ myFavNBA.includes("Steph"); // -1
 ```javascript
 Array.reverse(); // be careful, you will mutate the old one.
 
-let letters = ["A", "B", "C", "D", "E", "F", "G"];
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 letters.reverse(); // // ["G", "F", "E", "D", "C", "B", "A"]
 
 let nums = [1, 2, 3, 4, 5];
 nums.reverse(); // [5,4,3,2,1]
 
 // join
-letters.join("-"); // we can select the character to join them together.
+letters.join('-'); // we can select the character to join them together.
 // we'll get string "A-B-C-D-E-F-G"
 ```
 
 if we join the other type (not string) in array, it will return as string.
 
 ```javascript
-[1, 2, true, 14.3].join(""); // '12true14.3'
+[1, 2, true, 14.3].join(''); // '12true14.3'
 ```
 
 ### slice
@@ -151,7 +151,7 @@ arr.slice([start], [end]);
 let's see example
 
 ```javascript
-let myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+let myFavLang = ['javascript', 'python', 'go', 'elixir', 'rust', 'C++'];
 
 myFavLang.slice(2, 4); // start from index 2 not include 4 and we'll get [ 'go', 'elixir' ]
 
@@ -174,12 +174,12 @@ arr.splice(index[, deleteCount, item1, ..., itemN])
 see example
 
 ```javascript
-let myWords = ["I", "javascript", "very", "much"];
+let myWords = ['I', 'javascript', 'very', 'much'];
 
 // add start index1
 // remove 0 item
 // add love
-myWords.splice(1, 0, "love"); // myWords = ["I", "love", "javascript", "very", "much"]
+myWords.splice(1, 0, 'love'); // myWords = ["I", "love", "javascript", "very", "much"]
 
 // remove start index3
 // remove 2 items
@@ -189,7 +189,7 @@ myWords.splice(3, 2);
 
 // how'bout remove "love"
 // add 2 words,
-myWords.splice(1, 1, "really", "like");
+myWords.splice(1, 1, 'really', 'like');
 // myWords = ["I", "really", "like", "javascript"]
 ```
 
@@ -200,7 +200,7 @@ Kinda weird when use this method because, it works only string.
 ```javascript
 Array.sort();
 
-let randomArr = ["Bee", "Dude", "Cat", "Angel"];
+let randomArr = ['Bee', 'Dude', 'Cat', 'Angel'];
 
 randomArr.sort(); // [ 'Angel', 'Bee', 'Cat', 'Dude' ] and also mutated
 ```
@@ -236,7 +236,7 @@ console.log(b); // still get 2 because we creted a copy of value of a.
 compare to array
 
 ```javascript
-let myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+let myFavLang = ['javascript', 'python', 'go', 'elixir', 'rust', 'C++'];
 
 let yourFavLang = myFavLang;
 

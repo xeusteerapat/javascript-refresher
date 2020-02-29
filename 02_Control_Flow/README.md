@@ -88,8 +88,8 @@ let result = condition ? value1 : value2;
 
 let accessAllowed =
   age > 18
-    ? console.log("You can access to this website")
-    : console.log("You are not allowed to access this website");
+    ? console.log('You can access to this website')
+    : console.log('You are not allowed to access this website');
 ```
 
 ## Truthy and Falsy
@@ -107,16 +107,16 @@ Everthing else is truthy!
 
 ```javascript
 if (5) {
-  console.log("5 is truthy value");
+  console.log('5 is truthy value');
 }
 // 5 is truthy value
 
-let loggedInUser = "";
+let loggedInUser = '';
 
 if (loggedInUser) {
-  console.log("YOU ARE LOGGED IN!");
+  console.log('YOU ARE LOGGED IN!');
 } else {
-  console.log("PLESE LOG IN!");
+  console.log('PLESE LOG IN!');
 }
 
 // PLESE LOG IN! because "" is falsy value.
@@ -148,21 +148,21 @@ compare with `if-else` statement
 let day = 1;
 
 if (day === 1) {
-  console.log("MONDAY");
+  console.log('MONDAY');
 } else if (day === 2) {
-  console.log("TUESDAY");
+  console.log('TUESDAY');
 } else if (day === 3) {
-  console.log("WEDNESDAY");
+  console.log('WEDNESDAY');
 } else if (day === 4) {
-  console.log("THURSDAY");
+  console.log('THURSDAY');
 } else if (day === 5) {
-  console.log("FRIDAY");
+  console.log('FRIDAY');
 } else if (day === 6) {
-  console.log("SATURDAY");
+  console.log('SATURDAY');
 } else if (day === 7) {
-  console.log("SUNDAY");
+  console.log('SUNDAY');
 } else {
-  console.log("INVALID DAY!");
+  console.log('INVALID DAY!');
 }
 ```
 
@@ -173,27 +173,27 @@ let day = 1;
 
 switch (day) {
   case 1:
-    console.log("MONDAY");
+    console.log('MONDAY');
     break;
   case 2:
-    console.log("TUESDAY");
+    console.log('TUESDAY');
     break;
   case 3:
-    console.log("WEDNESDAY");
+    console.log('WEDNESDAY');
     break;
   case 4:
-    console.log("THURSDAY");
+    console.log('THURSDAY');
     break;
   case 5:
-    console.log("FRIDAY");
+    console.log('FRIDAY');
     break;
   case 6:
-    console.log("SATURDAY");
+    console.log('SATURDAY');
     break;
   case 7:
-    console.log("SUNDAY");
+    console.log('SUNDAY');
     break;
   default:
-    console.log("INVALID DAY!");
+    console.log('INVALID DAY!');
 }
 ```

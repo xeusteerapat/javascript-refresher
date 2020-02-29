@@ -14,8 +14,8 @@ let myObject = {}; // "object literal" syntax and we pretty much use it.
 ```javascript
 // an user object
 let user = {
-  firstname: "Teerapat", // key "firstname" store value "Teerapat"
-  lastname: "Prommarak",
+  firstname: 'Teerapat', // key "firstname" store value "Teerapat"
+  lastname: 'Prommarak',
   id: 191, // key "id" store value 191
   age: 33
 };
@@ -58,8 +58,8 @@ delete user.id // will return true and id will be removed
 and also we can use `["key"]` to access the value.
 
 ```javascript
-user["firstname"]; // "Teerapat"
-user["age"]; // 33
+user['firstname']; // "Teerapat"
+user['age']; // 33
 ```
 
 ## Updating properties
@@ -103,7 +103,7 @@ function makeUser(name, age) {
   };
 }
 
-let user1 = makeUser("Tim", 40);
+let user1 = makeUser('Tim', 40);
 
 // we can write in shorthand
 function makeUser(name, age) {
@@ -120,7 +120,7 @@ we can get keys or values from an object using `Object.keys(obj)` or `Object.val
 
 ```javascript
 let user = {
-  name: "Teerapat",
+  name: 'Teerapat',
   age: 33,
   isAdmin: true
 };
@@ -146,11 +146,11 @@ we also can check with `"key" in object` syntax
 
 ```javascript
 let user = {
-  name: "Pete",
+  name: 'Pete',
   age: 30
 };
 
-let key = "age";
+let key = 'age';
 console.log(key in user); // returns true
 ```
 
@@ -158,7 +158,7 @@ console.log(key in user); // returns true
 
 ```javascript
 let user = {
-  name: "Teerapat",
+  name: 'Teerapat',
   age: 33,
   isAdmin: true
 };
@@ -178,11 +178,11 @@ same as Array, object is "pass by reference". I recommend you check [Copy by ref
 > A variable stores not the object itself, but its “address in memory”, in other words “a reference” to it.
 
 ```javascript
-let user = { name: "John" };
+let user = { name: 'John' };
 
 let admin = user; // copy the reference, if we try to change properties in admin, user also change. Because 2 variables are pointing at the same address in memory.
 
-admin.name = "Teerapat";
+admin.name = 'Teerapat';
 console.log(user.name); // also change to Teerapat
 ```
 
@@ -246,7 +246,7 @@ Object.assign(dest, [src1, src2, src3...])
 
 ```javascript
 let user = {
-  name: "Teerapat",
+  name: 'Teerapat',
   age: 33
 };
 

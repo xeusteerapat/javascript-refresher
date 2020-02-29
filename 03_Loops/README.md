@@ -46,9 +46,9 @@ Basically, a loop exits when condition is `false` but we can exit loop anytime u
 ```javascript
 while (true) {
   // always run the loop forever
-  key = prompt("Enter key");
-  if (key === "stop") break; // if we enter "stop" the loop will break and exit.
-  value = prompt("Enter value");
+  key = prompt('Enter key');
+  if (key === 'stop') break; // if we enter "stop" the loop will break and exit.
+  value = prompt('Enter value');
   obj[key] = value;
 }
 ```
@@ -70,12 +70,12 @@ for (let i = 0; i < 10; i++) {
 
 ```javascript
 function func5(n) {
-  let ans = "";
+  let ans = '';
   for (let i = n; i >= 1; i--) {
     for (let j = n; j >= 1; j--) {
       ans += i;
     }
-    ans += "\n";
+    ans += '\n';
   }
   console.log(ans);
 }
@@ -94,7 +94,7 @@ func5(4);
 new way to iterate over iterables like `string` or `Array` the syntax is quite cleaner than normal `for` loop. **_not all browsers support_**
 
 ```javascript
-let team = ["Mesut", "Auba", "Laca", "Pepe"];
+let team = ['Mesut', 'Auba', 'Laca', 'Pepe'];
 
 // normal for loop
 for (let i = 0; i < team.length; i++) {
@@ -106,7 +106,7 @@ for (let player of team) {
   console.log(player); // result is same as above
 }
 
-for (let char of "ILOVEYOU") {
+for (let char of 'ILOVEYOU') {
   console.log(char.toLowerCase());
 }
 /*

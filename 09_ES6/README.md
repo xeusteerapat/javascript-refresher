@@ -222,4 +222,4 @@ const numObj = {...[4,5,6,7]}; // we'll get object back with indecies
 }
 ```
 
-### Rest syntax
+### Introduction to the arguments object

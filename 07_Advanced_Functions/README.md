@@ -26,13 +26,13 @@ how about same variable name but different scope?
 
 ```javascript
 function getPersonInfo1() {
-  const name = "Teerapat";
+  const name = 'Teerapat';
   const age = 33;
   console.log(age);
 }
 
 function getPersonInfo2() {
-  const name = "Mesut";
+  const name = 'Mesut';
   const age = 31;
   console.log(age);
 }
@@ -64,7 +64,7 @@ this concept often used in nested functions
 
 ```javascript
 function outer() {
-  let movie = "inception";
+  let movie = 'inception';
 
   function inner() {
     console.log(movie.toUpperCase());
@@ -86,10 +86,10 @@ what if we've declared `movie` inside `inner`
 
 ```javascript
 function outer() {
-  let movie = "inception";
+  let movie = 'inception';
 
   function inner() {
-    let movie = "the dark knight";
+    let movie = 'the dark knight';
     console.log(movie.toUpperCase());
   }
   inner();
@@ -180,7 +180,7 @@ function callTriple(func) {
 }
 
 function laugh() {
-  console.log("LOLOLOLOLOLOLOLOLOL");
+  console.log('LOLOLOLOLOLOLOLOLOL');
 }
 
 // then pass laugh to callTriple
@@ -280,7 +280,7 @@ function callTriple(func) {
 }
 
 function laugh() {
-  console.log("LOLOLOLOLOLOLOLOLOL");
+  console.log('LOLOLOLOLOLOLOLOLOL');
 }
 
 callTriple(laugh); // laugh is a callback function.
@@ -289,15 +289,15 @@ callTriple(laugh); // laugh is a callback function.
 ie. `laugh` function that execute after user clicks on the page.
 
 ```javascript
-const btn = document.querySelector("button");
-btn.addEventListener("click", laugh); // after user clicks button you'll see LOLOLOLOLOLOLOLOLOL in the console.
+const btn = document.querySelector('button');
+btn.addEventListener('click', laugh); // after user clicks button you'll see LOLOLOLOLOLOLOLOLOL in the console.
 ```
 
 or just add anonymous function
 
 ```javascript
-const btn = document.querySelector("button");
-btn.addEventListener("click", function() {
-  console.log("WHY DID YOU CLICK ME?");
+const btn = document.querySelector('button');
+btn.addEventListener('click', function() {
+  console.log('WHY DID YOU CLICK ME?');
 });
 ```

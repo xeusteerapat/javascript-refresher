@@ -50,7 +50,7 @@ for example:
 
 ```javascript
 function sayHi() {
-  console.log("Hello!");
+  console.log('Hello!');
   console.log(this);
 }
 ```
@@ -93,9 +93,9 @@ as you can see, value of `this` is different, inside the method `this` is refer 
 
 ```javascript
 const person = {
-  firstname: "Teerapat",
-  lastname: "Prommarak",
-  nickname: "X",
+  firstname: 'Teerapat',
+  lastname: 'Prommarak',
+  nickname: 'X',
   getFullname() {
     console.log(`${this.firstname} ${this.lastname}`);
   }
@@ -107,7 +107,7 @@ person.getFullname(); // Teerapat Prommarak
 what if we change the properties and call `getFullname` again? That changes reflected
 
 ```javascript
-person.firstname = "Bryant";
+person.firstname = 'Bryant';
 person.getFullname(); // Bryant Prommarak
 ```
 
@@ -117,9 +117,9 @@ We could also add another method to the object and call a different method using
 
 ```javascript
 const person = {
-  firstname: "Teerapat",
-  lastname: "Prommarak",
-  nickname: "X",
+  firstname: 'Teerapat',
+  lastname: 'Prommarak',
+  nickname: 'X',
   getFullname() {
     return `${this.firstname} ${this.lastname}`;
   },
@@ -139,9 +139,9 @@ Arrow functions are special, they don't have their own `this`. If we reference `
 
 ```javascript
 const person = {
-  firstname: "Teerapat",
-  lastname: "Prommarak",
-  nickname: "X",
+  firstname: 'Teerapat',
+  lastname: 'Prommarak',
+  nickname: 'X',
   getFullname() {
     return `${this.firstname} ${this.lastname}`;
   },
@@ -179,9 +179,9 @@ However, arrow function might useful in some particular cases. What if I want to
 
 ```javascript
 const person = {
-  firstname: "Teerapat",
-  lastname: "Prommarak",
-  nickname: "X",
+  firstname: 'Teerapat',
+  lastname: 'Prommarak',
+  nickname: 'X',
   getFullname() {
     return `${this.firstname} ${this.lastname}`;
   },
@@ -219,10 +219,10 @@ function User(name, age, isAdmin) {
 }
 
 // create a new user by using `new` operator
-const user1 = new User("David", 30, true);
+const user1 = new User('David', 30, true);
 console.log(user1); // User { name: 'David', age: 30, isAdmin: true }
 
-const user2 = new User("Peter", 25, false);
+const user2 = new User('Peter', 25, false);
 console.log(user2); // User { name: 'Peter', age: 25, isAdmin: false }
 ```
 
@@ -251,14 +251,14 @@ what if we return an object?
 
 ```javascript
 function BigUser() {
-  this.name = "John";
-  return { name: "Godzilla" }; // <-- returns this object
+  this.name = 'John';
+  return { name: 'Godzilla' }; // <-- returns this object
 }
 
 console.log(new BigUser().name); // Godzilla
 
 function SmallUser() {
-  this.name = "John";
+  this.name = 'John';
   return; // <-- actually it returns `this` (object that created)
 }
 
@@ -278,6 +278,6 @@ function User(name, age, isAdmin) {
   };
 }
 
-const user3 = new User("Mesut", 31, false);
+const user3 = new User('Mesut', 31, false);
 user3.greeting(); // => Hello, my name is Mesut I'm 31 years old
 ```

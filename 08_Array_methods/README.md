@@ -37,7 +37,7 @@ myFavLang.forEach((lang, idx) => {
 Create a new array with the result of calling a callback on every element in the array, then we can capture them to a new variable.
 
 ```javascript
-const myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+const myFavLang = ['javascript', 'python', 'go', 'elixir', 'rust', 'C++'];
 
 const capLang = myFavLang.map(lang => {
   return lang.toUpperCase();
@@ -77,17 +77,17 @@ const numDetails = numbers.map(number => {
 another one, let's make all CAP words.
 
 ```javascript
-const words = ["asap", "swat", "rsvp", "diy"];
+const words = ['asap', 'swat', 'rsvp', 'diy'];
 
 const caps = words.map(word => {
   return word
     .toUpperCase()
-    .split("")
-    .join(".");
+    .split('')
+    .join('.');
 });
 
 // caps
-["A.S.A.P", "S.W.A.T", "R.S.V.P", "D.I.Y"];
+['A.S.A.P', 'S.W.A.T', 'R.S.V.P', 'D.I.Y'];
 ```
 
 ## find
@@ -96,20 +96,20 @@ const caps = words.map(word => {
 
 ```javascript
 const movies = [
-  "The Fantastic Four",
-  "Mr. and Mrs. Smith",
-  "Mrs. Doubtfire",
-  "Mr. Deeds"
+  'The Fantastic Four',
+  'Mr. and Mrs. Smith',
+  'Mrs. Doubtfire',
+  'Mr. Deeds'
 ];
 
 const movie1 = movies.find(movie => {
-  return movie.includes("Mrs");
+  return movie.includes('Mrs');
 });
 
 // movie1 'Mr. and Mrs. Smith' it just return the first element that satisfies with our condition
 
 const movie2 = movies.find(movie => {
-  return movie.indexOf("Mrs") === 0;
+  return movie.indexOf('Mrs') === 0;
 });
 
 // movie2 Mrs. Doubtfire นonly the first match
@@ -135,58 +135,58 @@ with more complex example
 ```javascript
 const books = [
   {
-    title: "Good Omens",
-    authors: ["Terry Pratchett", "Neil Gaiman"],
+    title: 'Good Omens',
+    authors: ['Terry Pratchett', 'Neil Gaiman'],
     rating: 4.25,
-    genres: ["fiction", "fantasy"]
+    genres: ['fiction', 'fantasy']
   },
   {
-    title: "Changing My Mind",
-    authors: ["Zadie Smith"],
+    title: 'Changing My Mind',
+    authors: ['Zadie Smith'],
     rating: 3.83,
-    genres: ["nonfiction", "essays"]
+    genres: ['nonfiction', 'essays']
   },
   {
-    title: "Bone: The Complete Edition",
-    authors: ["Jeff Smith"],
+    title: 'Bone: The Complete Edition',
+    authors: ['Jeff Smith'],
     rating: 4.42,
-    genres: ["fiction", "graphic novel", "fantasy"]
+    genres: ['fiction', 'graphic novel', 'fantasy']
   },
   {
-    title: "American Gods",
-    authors: ["Neil Gaiman"],
+    title: 'American Gods',
+    authors: ['Neil Gaiman'],
     rating: 4.11,
-    genres: ["fiction", "fantasy"]
+    genres: ['fiction', 'fantasy']
   },
   {
-    title: "A Gentleman in Moscow",
-    authors: ["Amor Towles"],
+    title: 'A Gentleman in Moscow',
+    authors: ['Amor Towles'],
     rating: 4.36,
-    genres: ["fiction", "historical fiction"]
+    genres: ['fiction', 'historical fiction']
   },
   {
-    title: "The Name of the Wind",
-    authors: ["Patrick Rothfuss"],
+    title: 'The Name of the Wind',
+    authors: ['Patrick Rothfuss'],
     rating: 4.54,
-    genres: ["fiction", "fantasy"]
+    genres: ['fiction', 'fantasy']
   },
   {
-    title: "The Overstory",
-    authors: ["Richard Powers"],
+    title: 'The Overstory',
+    authors: ['Richard Powers'],
     rating: 4.19,
-    genres: ["fiction", "short stories"]
+    genres: ['fiction', 'short stories']
   },
   {
-    title: "The Way of Kings",
-    authors: ["Brandon Sanderson"],
+    title: 'The Way of Kings',
+    authors: ['Brandon Sanderson'],
     rating: 4.65,
-    genres: ["fantasy", "epic"]
+    genres: ['fantasy', 'epic']
   },
   {
-    title: "Lord of the flies",
-    authors: ["William Golding"],
+    title: 'Lord of the flies',
+    authors: ['William Golding'],
     rating: 3.67,
-    genres: ["fiction"]
+    genres: ['fiction']
   }
 ];
 
@@ -197,21 +197,21 @@ const goodBooks = books.filter(book => {
 // goodBooks
 [
   {
-    title: "The Name of the Wind",
-    authors: ["Patrick Rothfuss"],
+    title: 'The Name of the Wind',
+    authors: ['Patrick Rothfuss'],
     rating: 4.54,
-    genres: ["fiction", "fantasy"]
+    genres: ['fiction', 'fantasy']
   },
   {
-    title: "The Way of Kings",
-    authors: ["Brandon Sanderson"],
+    title: 'The Way of Kings',
+    authors: ['Brandon Sanderson'],
     rating: 4.65,
-    genres: ["fantasy", "epic"]
+    genres: ['fantasy', 'epic']
   }
 ];
 
 const fantasyBooks = books.filter(book => {
-  return book.genres.includes("fantasy");
+  return book.genres.includes('fantasy');
 });
 
 // this will return books with fantasy genres
@@ -220,7 +220,7 @@ const fantasyBooks = books.filter(book => {
 this very useful when you want to query data from the database, you might do something like this:
 
 ```javascript
-const query = "";
+const query = '';
 const results = book.filter(book => {
   return book.title.toLowerCase().includes(query.toLowerCase());
 });
@@ -231,26 +231,26 @@ const results = book.filter(book => {
 Tests whether **all elements** in the array apss the provided function, return a `boolean` value.
 
 ```javascript
-const words = ["dog", "dig", "log", "bag", "wig"];
+const words = ['dog', 'dig', 'log', 'bag', 'wig'];
 
 words.every(word => {
   return word.length === 3; // true
 });
 
 words.every(word => {
-  return word[0] === "d"; // false
+  return word[0] === 'd'; // false
 });
 
 words.every(word => {
   let last_letter = word[word.length - 1];
-  return last_letter === "g";
+  return last_letter === 'g';
 });
 ```
 
 let's see `some` method, similar to `every` but returns true if ANY of the array elements pass the test function.
 
 ```javascript
-const words = ["dog", "jello", "log", "cupcake", "bag", "wag"];
+const words = ['dog', 'jello', 'log', 'cupcake', 'bag', 'wag'];
 
 // Are there any of words longer than 4 chars?
 words.some(word => {
@@ -259,11 +259,11 @@ words.some(word => {
 
 // Do any words start with 'Z'
 words.some(word => {
-  return word[0] === "Z"; // false
+  return word[0] === 'Z'; // false
 });
 
 words.some(word => {
-  return w.includes("cake"); // true
+  return w.includes('cake'); // true
 });
 ```
 
@@ -367,7 +367,7 @@ const sum = numbers.reduce((accumulator, currentValue) => {
 we even use `reduce` to collect the values to the object
 
 ```javascript
-const votes = ["y", "y", "n", "y", "n", "y", "n", "y", "n", "n", "n", "y", "y"];
+const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
 
 const results = votes.reduce((acc, current) => {
   if (acc[current]) {

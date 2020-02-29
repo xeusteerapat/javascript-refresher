@@ -17,7 +17,7 @@ function funcName() {
 funcName();
 
 function greeting() {
-  console.log("Hello");
+  console.log('Hello');
 }
 
 greeting(); // Hello
@@ -32,7 +32,7 @@ function greeting(name) {
   console.log(`Hello, ${name}.`);
 }
 
-greeting("Teerapat"); // Hello, Teerapat
+greeting('Teerapat'); // Hello, Teerapat
 ```
 
 and we also can have multiple arguments, but when we pass it to the function, we need to pass to right order.
@@ -72,7 +72,7 @@ one thing to remember is that code after return statement will not run.
 ```javascript
 function square(x) {
   return x * x;
-  consol.log("all done!"); // will not print
+  consol.log('all done!'); // will not print
 }
 
 square(4); // 16
@@ -82,7 +82,7 @@ sometimes we might write function with a condition, we can return boolean like t
 
 ```javascript
 function isPurple(color) {
-  if (color.toLowerCase() == "purple") {
+  if (color.toLowerCase() == 'purple') {
     return true;
   } else {
     return false;
@@ -94,7 +94,7 @@ in this case, we can have 2 return statements but it will check condition first.
 
 ```javascript
 function isPurple(color) {
-  if (color.toLowerCase() == "purple") {
+  if (color.toLowerCase() == 'purple') {
     return true;
   }
   return false; // if it true, this line will not execute
@@ -105,7 +105,7 @@ even better, we can simply return the boolean expression like this:
 
 ```javascript
 function isPurple(color) {
-  return color.toLowerCase() == "purple";
+  return color.toLowerCase() == 'purple';
 }
 ```
 
