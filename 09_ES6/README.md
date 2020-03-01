@@ -16,12 +16,12 @@ function sum(a, b = 1) {
 sum(5, 8); // 13
 sum(5); // 6, b = 1
 
-const greeting = (name = "Tim") => {
+const greeting = (name = 'Tim') => {
   return `YOOO! ${name}`;
 };
 
 greeting(); // YOOO! Tim
-greeting("Mesut"); // YOOO! Mesut
+greeting('Mesut'); // YOOO! Mesut
 ```
 
 one thing you need to aware of is the order of default parameters when execute is matter.
@@ -136,7 +136,7 @@ pretty like `Array.concat` but shorter syntax, easier to see and re-order as you
 How about cloning an array? Yes, also can do with spread syntax.
 
 ```javascript
-const myFavLang = ["javascript", "python", "go", "elixir", "rust", "C++"];
+const myFavLang = ['javascript', 'python', 'go', 'elixir', 'rust', 'C++'];
 
 const clone = [...myFavLang]; // [ 'javascript', 'python', 'go', 'elixir', 'rust', 'C++' ]
 ```
@@ -151,10 +151,10 @@ even split strings with spread syntax!
 
 ```javascript
 // old fashion
-"ARSENAL".split(""); //['A', 'R', 'S', 'E', 'N', 'A','L']
+'ARSENAL'.split(''); //['A', 'R', 'S', 'E', 'N', 'A','L']
 
 // with spread syntax
-[..."ARSENAL"]; // ['A', 'R', 'S', 'E', 'N', 'A','L']
+[...'ARSENAL']; // ['A', 'R', 'S', 'E', 'N', 'A','L']
 ```
 
 ### Spread in Object literals
@@ -164,7 +164,7 @@ even split strings with spread syntax!
 ```javascript
 // clone object
 const user = {
-  name: "Teerapat",
+  name: 'Teerapat',
   age: 33,
   isAdmin: true
 };
@@ -174,13 +174,13 @@ const cloneUser = { ...user }; // { name: 'Teerapat', age: 33, isAdmin: true } a
 // or copy from the existing one and add more properties
 const feline = {
   legs: 4,
-  family: "Felidae"
+  family: 'Felidae'
 };
 
 const houseCat = {
   ...feline,
   isGrumpy: true,
-  personality: "Unpredictable"
+  personality: 'Unpredictable'
 };
 // {
 //   legs: 4,
@@ -222,4 +222,145 @@ const numObj = {...[4,5,6,7]}; // we'll get object back with indecies
 }
 ```
 
-### Introduction to the arguments object
+## Introduction to the arguments object (Not new)
+
+1. It's an array-like object
+
+   - Has a length property
+   - Does not have array methods like push/pop
+
+2. Contains all arguments passed to the function
+
+3. Not avalable inside of arrow functions
+
+```javascript
+function sum() {
+  console.log(arguments);
+}
+
+sum(1, 2, 3);
+```
+
+let's what we get
+![arguments](arguments.png)
+
+if we try to `sum` all the arguments
+
+```javascript
+function sum() {
+  return arguments.reduce((total, current) => {
+    return total + current;
+  });
+}
+// Uncaught TypeError: arguments.reduce is not a function
+```
+
+as mentioned above, `arguments` is not array. It just array-like object. and it does not work with arrow function
+
+```javascript
+const multiply = () => {
+  console.log(arguments);
+};
+
+multiply(2, 3); // Uncaught ReferenceError: arguments is not defined
+```
+
+## Rest parameters
+
+Collect all remaining arguments into an "actual" array.
+
+```javascript
+function sum(...nums) {
+  console.log(nums);
+}
+
+sum(1, 2, 3, 4); // [ 1, 2, 3, 4 ]
+```
+
+It's actual array, so we can use array methods like we did before
+
+```javascript
+function sum(...nums) {
+  return nums.reduce((total, current) => {
+    return total + current;
+  });
+}
+
+sum(1, 2, 3, 4); // 10
+```
+
+let's see example about how rest collects the remaining arguments
+
+```javascript
+function getFullname(first, last, ...titles){
+  console.log('first is ',first)
+  console.log('last is ',last)
+  console.log('title is ',titles)
+}
+
+getFullname('Roy', 'Jones', 'Jr.', 'III');
+
+first is  Roy
+last is  Jones
+title is  [ 'Jr.', 'III' ]
+```
+
+and it does work with arrow function
+
+```javascript
+const multiply = (...nums) => {
+  return nums.reduce((total, current) => {
+    return total * current;
+  });
+};
+
+multiply(2, 3, 4); // 24
+```
+
+## Destructuring
+
+A short, clean syntax to "unpack" values from array or properties from objects into distinct variables
+
+### Destructuring Array
+
+```javascript
+const RHCP = [
+  'Anthony Kiedis',
+  'Flea',
+  'John Frusciante',
+  'Chad Smith',
+  'Josh Klinghoffer',
+  'Dave Navaro'
+];
+
+// this is how we unpack to individual variables
+const [singer, bassist, guitarist, drummer] = RHCP;
+// singer -> Anthony Kiedis
+// bassist -> Flea
+// guitarist -> John Frusciante
+// drummer -> Chad Smith
+```
+
+and order is matter, if we swap the position, value alson change.
+
+```javascript
+const [bassist, drummer] = RHCP;
+// bassist -> Anthony Kiedis
+// drummer -> Flea
+```
+
+even we can skip the variable if we want to.
+
+```javascript
+const [singer, , , drummer] = RHCP;
+// bassist -> Anthony Kiedis
+// drummer -> Chad Smith
+// Flea and John will be skipped
+```
+
+and combined with `...` rest syntax
+
+```javascript
+const [singer, bassist, guitarist, drummer, ...[formerMembers]] = RHCP;
+// formerMembers = ['Josh Klinghoffer','Dave Navaro']
+```
