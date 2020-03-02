@@ -364,3 +364,52 @@ and combined with `...` rest syntax
 const [singer, bassist, guitarist, drummer, ...[formerMembers]] = RHCP;
 // formerMembers = ['Josh Klinghoffer','Dave Navaro']
 ```
+
+### Destructuring Object
+
+If we apply destructuring syntax to an object, we often named variables with the key of the object. The syntax is:
+
+```javascript
+const { key } = Object;
+```
+
+let's see some examples.
+
+```javascript
+const RHCP = {
+  name: 'Red Hot Chili Peppers',
+  style: 'Funk Rock',
+  yearsActive: 27,
+  members: [
+  'Anthony Kiedis',
+  'Flea',
+  'John Frusciante',
+  'Chad Smith'
+  ]
+};
+
+const { name, style, yearsActive, members } = RHCP;
+```
+
+what if we name variable that doesn't exist in the key of the object
+
+```javascript
+const { name, style, yearsActive, discography } = RHCP; // discography is undefined
+```
+
+if we need to use new variable name, we need to do like this:
+
+```javascript
+const { yearActive: years } = RHCP; // it will make variable name 'years' with value of yearActive (27)
+```
+
+also we can combine with `rest` operator just like we did with array.
+
+```javascript
+const { name, style, ...others } = RHCP; // we get another object back like so
+others
+{
+  yearsActive: 27,
+  members: [ 'Anthony Kiedis', 'Flea', 'John Frusciante', 'Chad Smith' ]
+}
+```
