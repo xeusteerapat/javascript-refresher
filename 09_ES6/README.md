@@ -334,8 +334,8 @@ const RHCP = [
 ];
 
 // this is how we unpack to individual variables
-const [singer, bassist, guitarist, drummer] = RHCP;
-// singer -> Anthony Kiedis
+const [vocalist, bassist, guitarist, drummer] = RHCP;
+// vocalist -> Anthony Kiedis
 // bassist -> Flea
 // guitarist -> John Frusciante
 // drummer -> Chad Smith
@@ -352,7 +352,7 @@ const [bassist, drummer] = RHCP;
 even we can skip the variable if we want to.
 
 ```javascript
-const [singer, , , drummer] = RHCP;
+const [vocalist, , , drummer] = RHCP;
 // bassist -> Anthony Kiedis
 // drummer -> Chad Smith
 // Flea and John will be skipped
@@ -361,7 +361,7 @@ const [singer, , , drummer] = RHCP;
 and combined with `...` rest syntax
 
 ```javascript
-const [singer, bassist, guitarist, drummer, ...[formerMembers]] = RHCP;
+const [vocalist, bassist, guitarist, drummer, ...[formerMembers]] = RHCP;
 // formerMembers = ['Josh Klinghoffer','Dave Navaro']
 ```
 
@@ -380,12 +380,7 @@ const RHCP = {
   name: 'Red Hot Chili Peppers',
   style: 'Funk Rock',
   yearsActive: 27,
-  members: [
-  'Anthony Kiedis',
-  'Flea',
-  'John Frusciante',
-  'Chad Smith'
-  ]
+  members: ['Anthony Kiedis', 'Flea', 'John Frusciante', 'Chad Smith']
 };
 
 const { name, style, yearsActive, members } = RHCP;
@@ -412,4 +407,34 @@ others
   yearsActive: 27,
   members: [ 'Anthony Kiedis', 'Flea', 'John Frusciante', 'Chad Smith' ]
 }
+```
+
+### Destructuring parameters
+
+One more place you'll often see destructuring used which is inside of a `function` definition where the parameters are listed. We put it inside the parentheses of a function definition what this will do is **"extract or unpack"** values from the arguments passed in.
+
+```javascript
+const fullName = ({ first, last }) => {
+  return `${first} ${last}`;
+};
+
+const runner = {
+  first: 'Eliud',
+  last: 'Kipchoge',
+  country: 'Kenya'
+};
+
+fullName(runner); // 'Eliud Kipchoge'
+```
+
+we also can do with array arguments
+
+```javascript
+const getMembers = ([vocalist, bassist, guitarist, drummer]) => {
+  return `RHCP is a super cool rock band that have ${vocalist} as a vocalist, bassist ${bassist}, ${guitarist} as guitarist and ${drummer} as a drummer.`;
+};
+
+const RHCP = ['Anthony Kiedis', 'Flea', 'John Frusciante', 'Chad Smith'];
+
+getMembers(RCHP); // 'RHCP is a super cool rock band that have Anthony Kiedis as a vocalist, bassist Flea, John Frusciante as guitarist and Chad Smith as a drummer.'
 ```
