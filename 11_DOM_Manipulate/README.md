@@ -122,4 +122,40 @@ then we'll get bunch of properties back.
 
 ![iceland obj](iceland_obj.png)
 
-many many properties we can manipulate it such as `src`, `width`, `height` many and many
+many many properties we can manipulate it such as `src`, `width`, `height` many and many useful methods. If there is a match and only if there is a match for that I.D. we get that element back as an object. If we pass in an invalid I.D. or something that's not on the page, we'll get `null`
+
+### `getElementByTagName`
+
+pretty similar to `getElementById` but we select by a type of element.
+
+```javascript
+document.getElementByTagName('input')
+```
+
+here is what we get back:
+
+![tagname](tag_name.png)
+
+It called **HTMLCollection** It look likes an array, but it's not. We can do some array-ish with this collection. If we try to access it with array index:
+
+![inputs collection](input_collection.png)
+
+So, it's just array-like object, then we can turn them into array by using `spread` syntax
+
+```javascript
+const arrInputs = [...inputs];
+console.log(arrInputs); // [input, input, input]
+```
+
+How 'bout loop over the array:
+
+```javascript
+arrInputs.forEach(item => console.log(item.value));
+
+// here is what we get
+Teerapat
+AsenalIsTheBest
+
+```
+
+because we didn't set the value of button, so we're not get any value back from the last input element.
