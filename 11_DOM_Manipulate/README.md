@@ -76,3 +76,50 @@ btnObj.addEventListener('click', function() {
 As you can see, we can manipulate anything we want to with javascript. The DOM, document object model is just a bunch of JavaScript objects with so many methods and properties. It's all turned into a javascript representation of objects that we can use we can interact with.
 
 ## The Document Object
+
+The document object is our entry point into the world of the DOM, which is **The DOM Tree** [(see here)](https://github.com/xeusteerapat/javascript-refresher/tree/master/11_DOM_Manipulate#the-taste-of-the-dom). It contains representation of all the content on the webpage, plus many many useful methods and properties.
+
+```javascript
+console.dir(document);
+```
+
+tons of objects inside document
+
+![document object](document.png)
+
+you don't need to know every property inside the document object, next section we'll get to know the majority method that we usually use for manipulating elements inside the browser.
+
+## Selecting methods
+
+The most important methods that have to do with selecting so selecting is a really important part of the DOM manipulation process. We select an element or multiple elements then do something with them. The different ways to select is using `document` methods, here are examples:
+
+### `getElementById`
+
+It takes an I.D. and it finds the matching element that contains or that has that I.D. on it and it returns that object.
+
+```javascript
+document.getElementById('id')
+```
+
+here I have `<p>` with `id='content'` then write this code to the browser console
+
+```javascript
+document.getElementById('iceland')
+```
+
+then see what returns
+
+![iceland](iceland.png)
+
+and if we save to the variable and check with `console.dir`
+
+```javascript
+const img = document.getElementById('iceland')
+console.dir(img);
+```
+
+then we'll get bunch of properties back.
+
+![iceland obj](iceland_obj.png)
+
+many many properties we can manipulate it such as `src`, `width`, `height` many and many
