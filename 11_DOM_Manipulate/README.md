@@ -12,7 +12,7 @@ hmmmmmmm... come on, just explain like I'm 5.
 
 Think like an object that we can manipulate them. We can change values of form, add animations, change style of anything or even listen to events for clicks or drag or hover or any sort of events that a user could trigger.
 
-here what's browser see:
+## The taste of the DOM
 
 ```html
 <body>
@@ -74,3 +74,5 @@ btnObj.addEventListener('click', function() {
 ![goodbye](goodbye.gif)
 
 As you can see, we can manipulate anything we want to with javascript. The DOM, document object model is just a bunch of JavaScript objects with so many methods and properties. It's all turned into a javascript representation of objects that we can use we can interact with.
+
+## The Document Object
