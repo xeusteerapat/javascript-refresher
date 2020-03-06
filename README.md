@@ -19,7 +19,7 @@ My reviewing of learning javascript in 2020.
 9. [ES6 and newly features](https://github.com/xeusteerapat/javascript-refresher/tree/master/09_ES6)
 10. [Object method and the `this` keyword](https://github.com/xeusteerapat/javascript-refresher/tree/master/10_Object_Method)
 11. [DOM manipulation Part 1](https://github.com/xeusteerapat/javascript-refresher/tree/master/11_DOM_Manipulation_Part_01)
-12. [DOM manipulation Part 2](https://github.com/xeusteerapat/javascript-refresher/tree/master/11_DOM_Manipulation_Part_02)
+12. [DOM manipulation Part 2](https://github.com/xeusteerapat/javascript-refresher/tree/master/12_DOM_Manipulation_Part_02)
 13. [Events](https://github.com/xeusteerapat/javascript-refresher/tree/master/13_Events)
 14. [Asynchronous JavaScript](https://github.com/xeusteerapat/javascript-refresher/tree/master/14_Asynchronous_Javascript)
 15. [HTTP Request](https://github.com/xeusteerapat/javascript-refresher/tree/master/15_HTTP_Request)
