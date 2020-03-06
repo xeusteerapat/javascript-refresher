@@ -98,13 +98,13 @@ The most important methods that have to do with selecting so selecting is a real
 It takes an I.D. and it finds the matching element that contains or that has that I.D. on it and it returns that object.
 
 ```javascript
-document.getElementById('id')
+document.getElementById('id');
 ```
 
 here I have `<p>` with `id='content'` then write this code to the browser console
 
 ```javascript
-document.getElementById('iceland')
+document.getElementById('iceland');
 ```
 
 then see what returns
@@ -114,7 +114,7 @@ then see what returns
 and if we save to the variable and check with `console.dir`
 
 ```javascript
-const img = document.getElementById('iceland')
+const img = document.getElementById('iceland');
 console.dir(img);
 ```
 
@@ -129,7 +129,7 @@ many many properties we can manipulate it such as `src`, `width`, `height` many 
 pretty similar to `getElementById` but we select by a type of element.
 
 ```javascript
-document.getElementByTagName('input')
+document.getElementByTagName('input');
 ```
 
 here is what we get back:
@@ -153,9 +153,9 @@ How 'bout loop over the array:
 arrInputs.forEach(item => console.log(item.value));
 
 // here is what we get
-Teerapat
-AsenalIsTheBest
-
+Teerapat; // value from 1st input
+AsenalIsTheBest; // value from 2nd input
+// no value from 3rd input
 ```
 
 because we didn't set the value of button, so we're not get any value back from the last input element.
