@@ -1,7 +1,5 @@
 # Asynchronous Javascript
 
-"Javascript is a single thread" that's mean it can do one thing at a time. A line of code is executed, then the next one is executed, and so on. However, sometimes we just can't wait for big file to finish download and stop the program running or we just can't wait for network requests finish before doing something else.
-
 So, before we move on, we need to understand the javascript "call stack" works
 
 ## Call stack
@@ -45,3 +43,63 @@ So the last function `multiply()` doesn't call any other function, so it returns
 here is another video explain about how call stack works in javascript.
 
 [![Call stack ecplain](https://i.ytimg.com/vi/W8AeMrVtFLY/maxresdefault.jpg)](https://www.youtube.com/watch?v=W8AeMrVtFLY)
+
+## JavaScript is a single thread
+
+"Javascript is a single thread" that's mean it can do one thing at that time. A line of code is executed, then the next one is executed, and so on.
+
+let's see some code:
+
+```javascript
+console.log('I HAPPEN FIRST!');
+alert('Hi!');
+console.log('I HAPPEN SECOND!');
+```
+
+as you can see, `alert('Hi')` is blocking second console.log() the code won't run until you click OK
+
+![alert](alert.png)
+
+And that seems like it could be a severe limitation if we do things that take time if we do things that aren't immediate we don't want to just have a user sit there waiting and have no other code running.
+
+Another example is network requests, imagine you want to request data from database or request data from third party API. That process are take time and it might give a bad user experience to waiting our webpage response.
+
+Here is callbacks comes in to plays.
+
+## Asynchronous Callbacks
+
+To solves this problem, JavaScript using "Callbacks" let's see what does it means from MDN.
+
+> Async callbacks are functions that are specified as arguments when calling a function which will start executing code in the background. When the background code finishes running, it calls the callback function to let you know the work is done, or to let you know that something of interest has happened.
+
+For those processes that time, we pass a callback function and those functions will be executed at the appropriate time. Remember `alert()` as above? let's change something:
+
+```javascript
+console.log('I HAPPEN FIRST');
+setTimeout(() => {
+  alert('HI!');
+}, 1000);
+console.log('I HAPPEN SECOND!');
+```
+
+![setTimeout](setTimeout.gif)
+
+and this time, you will see `I HAPPEN FIRST` then `I HAPPEN SECOND` and `alert('HI!')`. because we've pass `alert('HI!')` into `setTimeout()` function.
+
+As you can see, `setTimeout()` function takes 2 arguments, first is a callback function second is a delay time. When we pass a callback function as an argument to `setTimeout()` function, the callback function is not executed immediately. It is “called back” (hence the name) asynchronously somewhere inside the `setTimeout()` function’s body. The containing function is responsible for executing the callback function when the time comes (after 1 second delay).
+
+Why does this work? It seems like it shouldn't look nothing different is really happening except we're passing in some function to be called later. How can javascript keep track of 1 second and remember to do this or call this function while also moving to another `console.log('I HAPPEN SECOND')`
+
+The trick here is **"the browser does the work".** JavaScript is not the same as the browser. JavaScript is a language that is implemented in your browser. Those browser usually written in C++ and it capable of doing certain tasks that JavaScript sucks or take time. And when it's done, it reminds JavaScript Hey, your turn again.
+
+To summarize:
+
+- Browser come with "Web APIs" that are able to handle certain tasks in the background (like making requests or setTimeout)
+- The JavaScript call stack recognizes these Web APIs functions and passes them off to the browser to take care of.
+- Once the browser finishes those tasks, they return and are pushed onto the stack as a "Callback".
+
+I recommended you to watch this awesome video about how asynchronous javascript actually works behind the scenes. Also play around with this [tools](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+
+[![What the heck is event loop](https://i.ytimg.com/vi/8aGhZQkoFbQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
+## Welcome to Callback Hell
