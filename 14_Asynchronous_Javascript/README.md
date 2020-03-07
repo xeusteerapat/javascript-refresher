@@ -42,4 +42,6 @@ here what is look like:
 
 So the last function `multiply()` doesn't call any other function, so it returns `3 * 3` which is `9` and when it returns a value it is remove from the stack. And then, `square(3)` return `9` so it's poped off the stack. Now, we end up with `isRightTriangle()` and javascript will do the same thing with `4` and `5`. Remember, "The last thing in is the first thing out".
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/W8AeMrVtFLY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> "The JS Call Stack Explained In 9 Minutes"
+here is another video explain about how call stack works in javascript.
+
+[![Call stack ecplain](https://i.ytimg.com/vi/W8AeMrVtFLY/maxresdefault.jpg)](https://www.youtube.com/watch?v=W8AeMrVtFLY)
