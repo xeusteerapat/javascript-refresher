@@ -102,4 +102,228 @@ I recommended you to watch this awesome video about how asynchronous javascript 
 
 [![What the heck is event loop](https://i.ytimg.com/vi/8aGhZQkoFbQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
-## Welcome to Callback Hell
+## Promises
+
+The main problem of using callbacks approach is that if we need to use the result of this function of the rest of our code, we must be nested inside the callback, and if we still have to do more callbacks we have to do with many levels of functions indented into other functions
+
+```javascript
+doSomething(result => {
+  doSomethingElse(anotherResult => {
+    doSomethingElseAgain(yetAnotherResult => {
+      console.log(result);
+    });
+  });
+});
+```
+
+We usually defined this nested callbacks functions as "Callback Hell".
+
+### Promise come to resolve
+
+Promise is an object representing the eventual completion or failure of an asynchronous operation or some task that takes time. Think like Promise is a way of promising a value that you may not have at the moment.
+
+A Promise is a returned object to which you attach callbacks, instead of passing callbacks into a function
+
+let's see some code:
+
+```javascript
+const willYouGetADog = new Promise((resolve, reject) => {});
+```
+
+Basically, Promise takes 2 parameters, `resolve` and `reject` both are functions and if we check `willYouGetADog` we'll get:
+
+```javascript
+Promise { <pending> }
+```
+
+If we expanded Promise object, we'll see:
+
+```javascript
+[[PromiseStatus]]: 'pending'
+[[PromiseValue]]: undefinded
+```
+
+If we are talking about this idea in the real world of a promise when someone promises you something we would say the status of that promise is pending until either they break the promise or they follow through on it. So if we don't reject or resolve a promise its value or its status will be `pending`.
+
+What if we call `reject` on a Promise?
+
+```javascript
+const willYouGetADog = new Promise((resolve, reject) => {
+  reject();
+});
+```
+
+then we'll get an error `Uncaught (in promise)` and `PromiseStatus` is `'rejected'`
+
+![reject](promise_rejected.png)
+
+and if we instead `resolve`
+
+```javascript
+const willYouGetADog = new Promise((resolve, reject) => {
+  resolve();
+});
+```
+
+![resolve](promise_resolve.png)
+
+let's add more logic to our `Promise`
+
+```javascript
+const willYouGetADog = new Promise((resolve, reject) => {
+  const grade = Math.round(Math.random() * 4);
+
+  if (grade > 2.5) {
+    resolve();
+  } else {
+    reject();
+  }
+});
+
+// if grade > 2.5 Promise resolve
+// if not Promise reject
+```
+
+The important way to interact with the Promise is using `Promise.then` when Promise is resolved and `Promise.catch` when Promise is rejected.
+
+```javascript
+const willYouGetADog = new Promise((resolve, reject) => {
+  const grade = Math.round(Math.random() * 4);
+
+  if (grade > 2.5) {
+    resolve();
+  } else {
+    reject();
+  }
+});
+
+console.log(willYouGetADog);
+
+willYouGetADog
+  .then(() => {
+    console.log('Congrats! You get a dog');
+  })
+  .catch(() => {
+    console.log('Sorry, No dog');
+  });
+```
+
+here is what we get:
+
+![then and catch](then_catch.png)
+
+Returning Promise from Functions
+
+```javascript
+const makeDogPromise = () => {
+  return new Promise((resolve, reject) => {
+    const grade = Math.round(Math.random() * 4);
+
+    if (grade > 2.5) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+};
+
+makeDogPromise()
+  .then(() => {
+    console.log('Congrats! You get a dog');
+  })
+  .catch(() => {
+    console.log('Sorry, No dog');
+  });
+```
+
+### Resolving/Rejecting with values
+
+The next thing to know about Promises is that when you reject or resolve a promise you can reject or resolve it with a value and you'll have access to that value in your callback that you pass into then or catch
+
+```javascript
+const fakeRequest = url => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const rand = Math.random();
+      if (rand < 0.3) {
+        reject({ status: 404 });
+      } else {
+        resolve();
+      }
+    }, 2000);
+  });
+};
+
+fakeRequest()
+  .then(() => {
+    console.log('REQUEST SUCCEEDED');
+  })
+  .catch(response => {
+    console.log(response.status);
+    console.log('REQUEST FAILED');
+  });
+```
+
+As you can see, if `rand < 0.3`. So our Promise weill be rejected and what we get back is:
+
+![failed request](fail_request.png)
+
+we can pass access to the value that passed through reject function and we also can do the same when Promise is resolved.
+
+```javascript
+const fakeRequest = url => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const pages = {
+        '/users': [
+          { id: 1, username: 'Teerapat' },
+          { id: 2, username: 'Aubameyang' }
+        ]
+      };
+
+      const data = pages[url];
+      if (data) {
+        resolve({ status: 200, data });
+      } else {
+        reject({ status: 404 });
+      }
+    }, 2000);
+  });
+};
+
+fakeRequest('/users')
+  .then(response => {
+    console.log('Status Code', response.status);
+    console.log('Data', response.data);
+    console.log('REQUEST SUCCEEDED');
+  })
+  .catch(response => {
+    console.log(response.status);
+    console.log('REQUEST FAILED');
+  });
+```
+
+our `fakeRequest` function is check if `url` is not valid then return a promise with rejected
+
+here is what we get:
+
+![succeeded requests](succeed_request.png)
+
+and if `url` is not valid:
+
+```javascript
+fakeRequest('/userssssss')
+  .then(response => {
+    console.log('Status Code', response.status);
+    console.log('Data', response.data);
+    console.log('REQUEST SUCCEEDED');
+  })
+  .catch(response => {
+    console.log(response.status);
+    console.log('REQUEST FAILED');
+  });
+```
+
+![failed request](fail_request.png)
+
+### Chaining multiple Promises
