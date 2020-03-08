@@ -58,33 +58,98 @@
 //     console.log('Sorry, No dog');
 //   });
 
+// const fakeRequest = url => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const pages = {
+//         '/users': [
+//           { id: 1, username: 'Teerapat' },
+//           { id: 2, username: 'Aubameyang' }
+//         ]
+//       };
+
+//       const data = pages[url];
+//       if (data) {
+//         resolve({ status: 200, data });
+//       } else {
+//         reject({ status: 404 });
+//       }
+//     }, 2000);
+//   });
+// };
+
+// fakeRequest('/usersssssss')
+//   .then(response => {
+//     console.log('Status Code', response.status);
+//     console.log('Data', response.data);
+//     console.log('REQUEST SUCCEEDED');
+//   })
+//   .catch(response => {
+//     console.log(response.status);
+//     console.log('REQUEST FAILED');
+//   });
+
 const fakeRequest = url => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const pages = {
         '/users': [
-          { id: 1, username: 'Teerapat' },
-          { id: 2, username: 'Aubameyang' }
-        ]
+          { id: 1, username: 'Bilbo' },
+          { id: 5, username: 'Esmerelda' }
+        ],
+        '/users/1': {
+          id: 1,
+          username: 'Bilbo',
+          upvotes: 360,
+          city: 'Lisbon',
+          topPostId: 454321
+        },
+        '/users/5': {
+          id: 5,
+          username: 'Esmerelda',
+          upvotes: 571,
+          city: 'Honolulu'
+        },
+        '/posts/454321': {
+          id: 454321,
+          title: 'Ladies & Gentlemen, may I introduce my pet pig, Hamlet'
+        },
+        '/about': 'This is the about page!'
       };
-
       const data = pages[url];
       if (data) {
-        resolve({ status: 200, data });
+        resolve({ status: 200, data }); //resolve with a value!
       } else {
-        reject({ status: 404 });
+        reject({ status: 404 }); //reject with a value!
       }
-    }, 2000);
+    }, 1000);
   });
 };
 
-fakeRequest('/usersssssss')
+// fakeRequest('/users').then(response => {
+//   const id = response.data[0].id;
+//   // make request again to get data from user id 1
+//   fakeRequest(`/users/${id}`).then(response => {
+//     const postId = response.data.topPostId;
+//     // make request again to get data from postId 454321
+//     fakeRequest(`/posts/${postId}`).then(response => {
+//       console.log(response);
+//     });
+//   });
+// });
+
+fakeRequest('/users')
   .then(response => {
-    console.log('Status Code', response.status);
-    console.log('Data', response.data);
-    console.log('REQUEST SUCCEEDED');
+    const id = response.data[0].id;
+    return fakeRequest(`/users/${id}`);
   })
-  .catch(response => {
-    console.log(response.status);
-    console.log('REQUEST FAILED');
+  .then(response => {
+    const postId = response.data.topPostId;
+    return fakeRequest(`/posts/${postId}`);
+  })
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log('OH NO!..', error);
   });

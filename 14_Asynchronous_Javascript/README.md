@@ -327,3 +327,82 @@ fakeRequest('/userssssss')
 ![failed request](fail_request.png)
 
 ### Chaining multiple Promises
+
+let's say, we have hard code API like this:
+
+```javascript
+const fakeRequest = url => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const pages = {
+        '/users': [
+          { id: 1, username: 'Bilbo' },
+          { id: 5, username: 'Esmerelda' }
+        ],
+        '/users/1': {
+          id: 1,
+          username: 'Bilbo',
+          upvotes: 360,
+          city: 'Lisbon',
+          topPostId: 454321
+        },
+        '/users/5': {
+          id: 5,
+          username: 'Esmerelda',
+          upvotes: 571,
+          city: 'Honolulu'
+        },
+        '/posts/454321': {
+          id: 454321,
+          title: 'Ladies & Gentlemen, may I introduce my pet pig, Hamlet'
+        },
+        '/about': 'This is the about page!'
+      };
+      const data = pages[url];
+      if (data) {
+        resolve({ status: 200, data }); //resolve with a value!
+      } else {
+        reject({ status: 404 }); //reject with a value!
+      }
+    }, 1000);
+  });
+};
+```
+
+We have different end point APIs, if we want to access data that we want to. We can do just that:
+
+```javascript
+fakeRequest('/users').then(response => {
+  const id = response.data[0].id;
+  // make request again to get data from user id 1
+  fakeRequest(`/users/${id}`).then(response => {
+    const postId = response.data.topPostId;
+    // make request again to get data from postId 454321
+    fakeRequest(`/posts/${postId}`).then(response => {
+      console.log(response);
+    });
+  });
+});
+```
+
+oh no... callback hell again... Luckily, we don't need nested callbacks as above, we need to return a promise and we can chain `.then` methods just like this
+
+```javascript
+fakeRequest('/users')
+  .then(response => {
+    const id = response.data[0].id;
+    return fakeRequest(`/users/${id}`);
+  })
+  .then(response => {
+    const postId = response.data.topPostId;
+    return fakeRequest(`/posts/${postId}`);
+  })
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log('OH NO!..', error);
+  });
+```
+
+This look very much nicer.
