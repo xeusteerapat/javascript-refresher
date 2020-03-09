@@ -31,3 +31,4 @@ My reviewing of learning javascript in 2020.
 - [javacript.info](https://javascript.info/)
 - [The Modern Javascript Bootcamp Course (2020)](https://www.udemy.com/course/javascript-beginners-complete-tutorial/)
 - [The JavaScript Beginner's Handbook (2020 Edition)](https://www.freecodecamp.org/news/the-complete-javascript-handbook-f26b2c71719c/#asynchonousprogrammingandcallbacks)
+- [ES6 Javascript: The Complete Developer's Guide](https://www.udemy.com/course/javascript-es6-tutorial/)
