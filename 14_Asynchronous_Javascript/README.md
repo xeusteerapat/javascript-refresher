@@ -405,4 +405,138 @@ fakeRequest('/users')
   });
 ```
 
-This look very much nicer.
+This look very much nicer, easy to read and understand.
+
+## Async/Await
+
+Async function always returns a Promise. If function return a value, the promise will be resolved with that value. If function throw an exception, the promise will be rejected.
+
+### Async
+
+```javascript
+async function sayHi() {
+  return 'Hi, there';
+}
+
+sayHi(); // returns Promise
+```
+
+![async sayhi](async_sayhi.png)
+
+so, then I can do just this:
+
+```javascript
+async function sayHi() {
+  return 'Hi, there';
+}
+
+sayHi().then(value => console.log(value)); // 'Hi, there'
+```
+
+In case of `rejected`:
+
+```javascript
+async function add(x, y) {
+  if (typeof x !== 'number' || typeof y !== 'number') {
+    throw 'X and Y must be number';
+  }
+  return x + y;
+}
+
+add('e', 5);
+```
+
+![async return](async_reject.png)
+
+and we can do `catch` method to capture an error
+
+```javascript
+async function add(x, y) {
+  if (typeof x !== 'number' || typeof y !== 'number') {
+    throw 'X and Y must be number';
+  }
+  return x + y;
+}
+
+add('e', 5)
+  .then(value => {
+    console.log(value);
+  })
+  .catch(error => console.log(err)); // X and Y must be number
+```
+
+As you can see, `async` is easier than previous syntax `new Promise`. Let's see how to use with `await` keyword.
+
+### Await
+
+We can only use `await` keyword inside of function declared with `async` keyword. `await` will pause the execution of the function, waiting for `Promise` to be resolved. we can run code after an asynchronous operation without having to mess things with callbacks.
+
+```javascript
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2Seconds();
+  console.log(result); // 'calling' and 'resolved'
+}
+
+asyncCall();
+```
+
+So, we don't have to use `.then()` method. With `await` keyword, it will wait until `Promise` is resolved (in this case is after 2 seconds). Then we can store in variable `result` and logging in the console.
+
+### Error Handling in Async Function
+
+Basically, we use `try catch`
+
+```javascript
+function resolveAfter2Seconds() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('reject');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  try {
+    console.log('calling');
+    const result = await resolveAfter2Seconds();
+    console.log(result);
+  } catch (err) {
+    consol.log('In catch with ', err);
+  }
+}
+
+asyncCall(); // calling and In catch with  reject
+```
+
+### Handling multiple Awaits
+
+```javascript
+const setTimeoutAndLog = async input => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(input);
+      resolve();
+    }, 1000);
+  });
+};
+
+const runTimer = async () => {
+  try {
+    await setTimeoutAndLog('a');
+    await setTimeoutAndLog('b');
+    await setTimeoutAndLog('c');
+  } catch (error) {
+    console.log(error);
+  }
+};
+runTimer(); // log 'a', 'b', 'c', 'd' every second respectively
+```
