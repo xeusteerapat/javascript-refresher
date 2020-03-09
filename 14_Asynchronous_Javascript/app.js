@@ -154,22 +154,67 @@
 //     console.log('OH NO!..', error);
 //   });
 
-function resolveAfter2Seconds() {
+// function resolveAfter2Seconds() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject('reject');
+//     }, 2000);
+//   });
+// }
+
+// async function asyncCall() {
+//   try {
+//     console.log('calling');
+//     const result = await resolveAfter2Seconds();
+//     console.log(result);
+//   } catch (err) {
+//     console.log('In catch with ', err);
+//   }
+// }
+
+// asyncCall(); //
+
+// Promise.all
+// function getData(url) {
+//   return new Promise((resolve, reject) => {
+//     fetch(url)
+//       .then(response => resolve(response))
+//       .catch(err => reject(err));
+//   });
+// }
+
+// const promise1 = getData('https://jsonplaceholder.typicode.com/users');
+// const promise2 = getData('https://jsonplaceholder.typicode.com/posts');
+// const promise3 = getData('https://jsonplaceholder.typicode.com/todos');
+
+const getData = url => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject('reject');
-    }, 2000);
+    fetch(url)
+      .then(response => resolve(response.json()))
+      .catch(error => reject(error));
   });
-}
+};
 
-async function asyncCall() {
-  try {
-    console.log('calling');
-    const result = await resolveAfter2Seconds();
-    console.log(result);
-  } catch (err) {
-    console.log('In catch with ', err);
-  }
-}
+const promise1 = getData('https://jsonplaceholder.typicode.com/users');
+const promise2 = getData('https://jsonplaceholder.typicode.com/posts');
+const promise3 = getData('https://jsonplaceholder.typicode.com/todos');
 
-asyncCall(); //
+Promise.all([promise1, promise2, promise3]).then(result => console.log(result));
+
+// axios
+// const getData = url => {
+//   return new Promise((resolve, reject) => {
+//     axios
+//       .get(url)
+//       .then(response => {
+//         resolve(response);
+//       })
+//       .catch(error => reject(error));
+//   });
+// };
+
+// const promise1 = getData('https://jsonplaceholder.typicode.com/users');
+// const promise2 = getData('https://jsonplaceholder.typicode.com/posts');
+// const promise3 = getData('https://jsonplaceholder.typicode.com/todos');
+
+// Promise.all([promise1, promise2, promise3]).then(result => console.log(result));

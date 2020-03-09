@@ -124,13 +124,15 @@ Promise is an object representing the eventual completion or failure of an async
 
 A Promise is a returned object to which you attach callbacks, instead of passing callbacks into a function
 
+![promise_state](promise_state.png)
+
 let's see some code:
 
 ```javascript
 const willYouGetADog = new Promise((resolve, reject) => {});
 ```
 
-Basically, Promise takes 2 parameters, `resolve` and `reject` both are functions and if we check `willYouGetADog` we'll get:
+Basically, there are 2 parameters, `resolve` and `reject` both are functions and if we check `willYouGetADog` we'll get:
 
 ```javascript
 Promise { <pending> }
@@ -539,4 +541,22 @@ const runTimer = async () => {
   }
 };
 runTimer(); // log 'a', 'b', 'c', 'd' every second respectively
+```
+
+## Promise.all
+
+`Promise.all()` is actually a promise that takes an array of promises as an input (an iterable). Then it gets resolved when all the promises get resolved or any one of them gets rejected.
+
+```javascript
+const p1 = Promise.resolve(3);
+const p2 = 1337;
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo');
+  }, 100);
+});
+
+Promise.all([p1, p2, p3]).then(values => {
+  console.log(values); // [3, 1337, "foo"]
+});
 ```
