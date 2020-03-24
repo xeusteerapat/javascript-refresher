@@ -270,11 +270,11 @@ multiply(2, 3); // Uncaught ReferenceError: arguments is not defined
 Collect all remaining arguments into an "actual" array.
 
 ```javascript
-function sum(...nums) {
+function myNumber(...nums) {
   console.log(nums);
 }
 
-sum(1, 2, 3, 4); // [ 1, 2, 3, 4 ]
+myNumber(1, 2, 3, 4); // [ 1, 2, 3, 4 ]
 ```
 
 It's actual array, so we can use array methods like we did before
